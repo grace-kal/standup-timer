@@ -6,7 +6,7 @@ namespace StandUpTimer.App.Pages;
 [QueryProperty(nameof(Participants), "Participants")]
 [QueryProperty(nameof(MinutesPerPerson), "MinutesPerPerson")]
 public partial class TimerPage : ContentPage
-{
+{ 
     public List<Participant> Participants { get; set; } = new();
     public int MinutesPerPerson { get; set; } = AppConstants.Timer.DefaultMinutes;
 
