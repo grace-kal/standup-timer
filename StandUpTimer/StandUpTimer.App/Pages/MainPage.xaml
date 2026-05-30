@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StandUpTimer.App.Pages.MainPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundDark}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,52,24,40"
+                             Spacing="24">
+
+            <Label Text="Standup Timer"
+                   FontSize="34"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Configure your standup"
+                   FontSize="14"
+                   TextColor="{StaticResource TextMuted}"
+                   HorizontalOptions="Center"
+                   Margin="0,-16,0,0" />
+
+            <Border BackgroundColor="{StaticResource Surface}"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20,16">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Minutes per person"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextSecondary}" />
+
+                    <Grid ColumnDefinitions="44,*,44">
+
+                        <Border BackgroundColor="{StaticResource SurfaceVariant}"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10">
+                            <Label x:Name="MinusButton"
+                                   Text="−"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource AccentRed}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnMinusTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
+
+                        <Label x:Name="MinutesLabel"
+                               Grid.Column="1"
+                               Text="2 min / person"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+
+                        <Border Grid.Column="2"
+                                BackgroundColor="{StaticResource SurfaceVariant}"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10">
+                            <Label Text="+"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource AccentGreen}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnPlusTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
+
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="{StaticResource Surface}"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20,16">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Participants"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextSecondary}" />
+
+                    <Grid ColumnDefinitions="*,80"
+                          ColumnSpacing="8">
+
+                        <Border BackgroundColor="{StaticResource SurfaceVariant}"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12,0">
+                            <Entry x:Name="NameEntry"
+                                   Placeholder="Enter name..."
+                                   PlaceholderColor="{StaticResource TextMuted}"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   BackgroundColor="Transparent"
+                                   Completed="OnNameEntryCompleted"
+                                   FontSize="14" />
+                        </Border>
+
+                        <Border x:Name="AddButton"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource AccentPurple}"
+                                Stroke="{StaticResource AccentPurple}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 10">
+                            <Label Text="Add"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnAddParticipantTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
+
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="ParticipantsList"
+                                         Spacing="8" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="StartButton"
+                    BackgroundColor="{StaticResource AccentGreen}"
+                    Stroke="{StaticResource AccentGreen}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0,18"
+                    IsEnabled="False"
+                    Opacity="0.4">
+                <Label Text="START"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnStartTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

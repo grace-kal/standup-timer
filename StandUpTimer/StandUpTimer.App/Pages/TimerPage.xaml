@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StandUpTimer.App.Pages.TimerPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundDark}">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="24,52,24,40">
+
+        <Border Grid.Row="0"
+                BackgroundColor="{StaticResource Surface}"
+                Stroke="{StaticResource BorderColor}"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16"
+                Padding="20,16"
+                Margin="0,0,0,24">
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Speaking now"
+                       FontSize="12"
+                       TextColor="{StaticResource TextMuted}"
+                       HorizontalOptions="Center" />
+                <Label x:Name="CurrentPersonLabel"
+                       Text="—"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center" />
+                <Label x:Name="UpNextLabel"
+                       Text=""
+                       FontSize="12"
+                       TextColor="{StaticResource TextMuted}"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="1"
+                             VerticalOptions="Center"
+                             Spacing="32">
+
+            <Label x:Name="TimerLabel"
+                   Text="02:00"
+                   FontSize="96"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" />
+
+            <Border BackgroundColor="{StaticResource Surface}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 8"
+                    HeightRequest="8"
+                    Margin="0">
+                <Grid>
+                    <BoxView Color="{StaticResource Surface}"
+                             CornerRadius="8" />
+                    <BoxView x:Name="ProgressBar"
+                             Color="{StaticResource AccentGreen}"
+                             CornerRadius="8"
+                             HorizontalOptions="Start"
+                             WidthRequest="0" />
+                </Grid>
+            </Border>
+
+            <VerticalStackLayout x:Name="ParticipantsStatus"
+                                 Spacing="8" />
+
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="12">
+
+            <Border BackgroundColor="{StaticResource Surface}"
+                    Stroke="{StaticResource BorderColor}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0,18">
+                <Label Text="← Back"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextMuted}"
+                       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+
+            <Border x:Name="NextButton"
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource AccentGreen}"
+                    Stroke="{StaticResource AccentGreen}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0,18">
+                <Label x:Name="NextButtonLabel"
+                       Text="NEXT  →"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNextTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
